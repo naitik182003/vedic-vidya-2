@@ -1,0 +1,905 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy of Vedic Vidya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #666;
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            background-color: rgba(106, 13, 173, 0.9);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(106, 13, 173, 0.8), rgba(106, 13, 173, 0.7)), url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 20px 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffd700;
+            color: #6a0dad;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #fff;
+        }
+
+        /* Features Sections */
+        .features {
+            padding: 80px 20px;
+            background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center/cover;
+        }
+
+        .features-alt {
+            background-color: #f9f9f9;
+            background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .features-alt::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(249, 249, 249, 0.9);
+            z-index: 1;
+        }
+
+        .features-alt .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: #6a0dad;
+            margin-bottom: 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(to right, rgba(106, 13, 173, 0.9), rgba(138, 43, 226, 0.8)), url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        /* Steps Section */
+        .steps-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+
+        .step-number {
+            background: #6a0dad;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 30px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(rgba(249, 249, 249, 0.9), rgba(249, 249, 249, 0.9)), url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .testimonial:before {
+            content: '\201C';
+            font-size: 5rem;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #f0f0f0;
+            z-index: 0;
+        }
+
+        .testimonial p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial cite {
+            display: block;
+            font-weight: bold;
+            margin-top: 20px;
+            font-style: normal;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pricing-plan {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-header {
+            background: #6a0dad;
+            color: white;
+            padding: 20px;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .pricing-features {
+            padding: 30px;
+            list-style: none;
+        }
+
+        .pricing-features li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .pricing-features li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #6a0dad;
+        }
+
+        .pricing-footer {
+            padding: 0 30px 30px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info i {
+            color: #6a0dad;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #6a0dad;
+            background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center bottom;
+            position: relative;
+            color: #ffffff;
+            padding: 50px 0 20px;
+        }
+
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(106, 13, 173, 0.95);
+            z-index: 1;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Course Cards Section */
+        .courses-section {
+            padding: 80px 20px;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .course-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #6a0dad;
+        }
+
+        .course-description {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            color: #888;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2em;
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background-color: #6a0dad;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        .testimonial, .contact {
+            background: white;
+            padding: 40px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-container {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .contact input, .contact textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact button:hover {
+            background: #218838;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #ddd;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Academy of Vedic Vidya</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Discover Ancient Wisdom for Modern Life</h1>
+            <p>Learn authentic Vedic knowledge from expert practitioners through our comprehensive online courses</p>
+            <a href="#pricing" class="btn">Explore Courses</a>
+        </div>
+    </section>
+
+    <!-- Features 1 Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Academy of Vedic Vidya</h2>
+            <p class="section-subtitle">Discover what makes our courses unique and transformative</p>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Expert Faculty</h3>
+                    <p>Learn from experienced practitioners with decades of expertise in authentic Vedic traditions</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certified Courses</h3>
+                    <p>Receive recognized certification upon course completion to validate your knowledge</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Flexible Learning</h3>
+                    <p>Study at your own pace with lifetime access to course materials and resources</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Support</h3>
+                    <p>Join a vibrant community of like-minded learners on the path of Vedic wisdom</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Begin Your Spiritual Journey Today</h2>
+            <p>Transform your life with ancient Vedic wisdom that has guided seekers for thousands of years</p>
+            <a href="#pricing" class="btn">View All Courses</a>
+        </div>
+    </section>
+
+    <!-- Features 2 Section -->
+    <section class="features features-alt">
+        <div class="container">
+            <h2 class="section-title">Our Unique Approach</h2>
+            <p class="section-subtitle">We blend traditional wisdom with modern learning techniques</p>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Authentic Texts</h3>
+                    <p>Study directly from original sources with expert guidance and interpretation</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-hands"></i>
+                    <h3>Practical Application</h3>
+                    <p>Learn how to apply ancient wisdom in your daily life and professional practice</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-video"></i>
+                    <h3>HD Video Lessons</h3>
+                    <p>Engage with high-quality video content that makes complex concepts accessible</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-comments"></i>
+                    <h3>1-on-1 Mentoring</h3>
+                    <p>Get personalized guidance from instructors to deepen your understanding</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses-section">
+        <div class="container">
+            <h2 class="section-title">Our Featured Courses</h2>
+            <p class="section-subtitle">Explore our most popular Vedic knowledge courses</p>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Vedic Astrology (Jyotish)</h3>
+                        <p class="course-description">Learn the ancient science of Vedic astrology to understand celestial influences on human life and predict future events.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 12 Weeks</span>
+                            <span><i class="fas fa-user-graduate"></i> 2,500+ Students</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Vastu Shastra</h3>
+                        <p class="course-description">Master the principles of Vedic architecture to create harmonious living and working spaces that promote wellbeing.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 8 Weeks</span>
+                            <span><i class="fas fa-user-graduate"></i> 1,800+ Students</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHZlZGljJTIwY29sb3J8ZW58MHx8fHwxNjY0MjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');"></div>
+                    <div class="course-content">
+                        <h3 class="course-title">Vedic Numerology</h3>
+                        <p class="course-description">Discover how numbers influence your life path and learn calculation techniques to guide important life decisions.</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 6 Weeks</span>
+                            <span><i class="fas fa-user-graduate"></i> 3,200+ Students</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Course Pricing</h2>
+            <p class="section-subtitle">Choose the plan that best fits your learning journey</p>
+            <div class="pricing-grid">
+                <div class="pricing-plan">
+                    <div class="pricing-header">
+                        <h3 class="plan-name">Basic</h3>
+                        <div class="plan-price">₹4,999</div>
+                        <p>One-time payment</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>3-month course access</li>
+                        <li>Basic course materials</li>
+                        <li>Community forum access</li>
+                        <li>Course completion certificate</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="pricing-plan">
+                    <div class="pricing-header">
+                        <h3 class="plan-name">Premium</h3>
+                        <div class="plan-price">₹9,999</div>
+                        <p>One-time payment</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Lifetime course access</li>
+                        <li>Advanced course materials</li>
+                        <li>Community forum access</li>
+                        <li>Course completion certificate</li>
+                        <li>2 personal mentoring sessions</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="pricing-plan">
+                    <div class="pricing-header">
+                        <h3 class="plan-name">Master</h3>
+                        <div class="plan-price">₹19,999</div>
+                        <p>One-time payment</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Lifetime access to all courses</li>
+                        <li>Complete materials library</li>
+                        <li>Priority community support</li>
+                        <li>Professional certification</li>
+                        <li>Monthly mentoring sessions</li>
+                        <li>Teaching authorization</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps features-alt">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Begin your journey in just a few simple steps</p>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Choose Your Course</h3>
+                        <p>Browse our course catalog and select the Vedic discipline that resonates with your spiritual journey.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Enroll and Access</h3>
+                        <p>Complete the enrollment process and gain immediate access to your course materials and community.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Learn at Your Pace</h3>
+                        <p>Follow the structured curriculum at your own pace, with ongoing support from instructors.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Practice and Apply</h3>
+                        <p>Apply your knowledge through practical exercises and real-world applications.</p>
+                    </div>
+                </div>
+                <!-- Testimonial Section -->
+    <section class="testimonial">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-container">
+            <p id="testimonial-text">"This service is fantastic! Highly recommended."</p>
+            <p id="testimonial-author">- John Doe</p>
+        </div>
+        <button onclick="nextTestimonial()">Next</button>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+        <div>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </div>
+    </footer>
